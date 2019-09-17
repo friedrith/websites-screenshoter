@@ -11,6 +11,7 @@
     "notify": "./dist/bin.js"
   },
   "scripts": {
+    "setup": "babel-node .scripts/setup.js",
     "build": "webpack",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
