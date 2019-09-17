@@ -1,12 +1,19 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:jest/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:jest/recommended',
+    'standard',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'prettier',
+  ],
   parser: 'babel-eslint',
   env: {
     es6: true,
     node: true,
     commonjs: true,
   },
-  plugins: ['jest'],
+  plugins: ['jest', 'node'],
   rules: {
     semi: [2, 'never'],
     'arrow-body-style': 0,
@@ -30,6 +37,8 @@ module.exports = {
     'comma-dangle': ['error', 'always-multiline'],
     quotes: ['error', 'single'],
     'space-infix-ops': 'error',
+    'import/order': 'error',
+    'no-console': 'error',
   },
   parserOptions: {
     ecmaFeatures: {

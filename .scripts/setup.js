@@ -2,6 +2,8 @@ import path from 'path'
 import { promises as fs } from 'fs'
 import { name } from '../package'
 
+/* eslint-disable no-console */
+
 const filenames = [path.resolve(__dirname, '../CONTRIBUTING.md')]
 
 const replaceByRealName = filename =>
@@ -19,3 +21,5 @@ Promise.all(filenames.map(replaceByRealName))
     console.log(errors)
     process.exit(2)
   })
+
+/* eslint-enable no-console */

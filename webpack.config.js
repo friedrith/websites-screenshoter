@@ -3,7 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
   target: 'node',
-  entry: './src/cli.js',
+  entry: './src/start.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bin.js',
