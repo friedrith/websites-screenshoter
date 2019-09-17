@@ -1,0 +1,68 @@
+{
+  "name": "PROJECT_NAME",
+  "version": "VERSION",
+  "description": "DESCRIPTION",
+  "main": "index.js",
+  "repository": "git@github.com:friedrith/template-node.git",
+  "author": "Thibault Friedrich <thibault.friedrich@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "notify": "./dist/bin.js"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "dev": "webpack --mode development --watch",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint --fix src/**/*.js",
+    "prettier:check": "prettier --check 'src/**/*.js'",
+    "prettier:fix": "prettier --write 'src/**/*.js'",
+    "release": "standard-version",
+    "commitlint": "commitlint --from dcbefce4693ad9bddbebbf22db210441b3d5c2f1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "./src/*.js": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": -10
+      }
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/runtime": "^7.6.0",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@commitlint/travis-cli": "^8.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-jest": "^22.17.0",
+    "husky": "^3.0.5",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "shebang-loader": "^0.0.1",
+    "standard-version": "^7.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
