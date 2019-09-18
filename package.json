@@ -21,7 +21,7 @@
     "prettier:check": "prettier --check 'src/**/*.js' '.scripts/**/*.js'",
     "prettier:fix": "prettier --write 'src/**/*.js' '.scripts/**/*.js'",
     "release": "standard-version",
-    "commitlint": "commitlint --from dcbefce4693ad9bddbebbf22db210441b3d5c2f1"
+    "commitlint": "commitlint --from 623a6550fec576cf037a44138d2d7c3ba049f792"
   },
   "husky": {
     "hooks": {
