@@ -7,4 +7,4 @@ install:
 script:
   - yarn run commitlint
   - yarn run lint
-  - yarn run prettier:check
+  - yarn run format
