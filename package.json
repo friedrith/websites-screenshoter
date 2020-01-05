@@ -15,13 +15,22 @@
     "build": "webpack",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "start": "webpack --mode development --watch",
+    "start": "concurrently \"npm run build:dev\" \"npm run start:prod\"",
+    "build:dev": "webpack --mode development --watch --port 9000",
+    "start:prod": "nodemon dist/bin.js localhost 8080",
     "lint": "eslint 'src/**/*.js' '.scripts/**/*.js'",
     "lint:fix": "eslint --fix 'src/**/*.js' '.scripts/**/*.js'",
     "format": "prettier --check 'src/**/*.js' '.scripts/**/*.js'",
     "format:fix": "prettier --write 'src/**/*.js' '.scripts/**/*.js'",
     "release": "standard-version",
     "commitlint": "commitlint --from 623a6550fec576cf037a44138d2d7c3ba049f792"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/*",
+      "node_modules/*"
+    ],
+    "delay": "2500"
   },
   "husky": {
     "hooks": {
@@ -54,6 +63,7 @@
     "@commitlint/travis-cli": "^8.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "concurrently": "^5.0.2",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-standard": "^14.1.0",
@@ -64,11 +74,17 @@
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
     "prettier": "^1.18.2",
     "shebang-loader": "^0.0.1",
     "standard-version": "^7.0.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "winston": "^3.2.1"
   }
 }

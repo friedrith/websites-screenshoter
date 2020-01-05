@@ -7,6 +7,7 @@ A template optimized for node.js projects.
 ```bash
 
 yarn
+yarn start
 
 ```
 

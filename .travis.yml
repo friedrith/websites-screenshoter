@@ -8,3 +8,4 @@ script:
   - yarn run commitlint
   - yarn run lint
   - yarn run format
+  - yarn build
