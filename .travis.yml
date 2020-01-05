@@ -5,7 +5,7 @@ node_js:
 install:
   - yarn
 script:
-  - yarn run commitlint
-  - yarn run lint
-  - yarn run format
+  - yarn commitlint
+  - yarn lint
+  - yarn format
   - yarn build
