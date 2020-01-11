@@ -8,6 +8,9 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bin.js',
   },
+  node: {
+    __dirname: true,
+  },
   module: {
     rules: [
       {
