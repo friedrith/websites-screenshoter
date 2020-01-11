@@ -3,10 +3,12 @@ const webpack = require('webpack')
 
 module.exports = {
   target: 'node',
-  entry: './src/start.js',
+  entry: {
+    main: './src/main.js',
+    list: './src/list.js',
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bin.js',
   },
   node: {
     __dirname: true,

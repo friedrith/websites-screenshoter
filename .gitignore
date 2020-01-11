@@ -3,6 +3,6 @@ dist
 yarn-error.log
 
 coverage
-
+config.yaml
 examples
 logs

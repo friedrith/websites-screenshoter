@@ -1,28 +1,22 @@
-# template-node [![Build Status](https://travis-ci.org/friedrith/template-node.svg?branch=master)](https://travis-ci.org/friedrith/template-node)
+# Data Mountain windows generator
 
-A template optimized for node.js projects.
+[Data Moutain](https://www.microsoft.com/en-us/research/wp-content/uploads/1998/01/p153-robertson.pdf) is an experiment to evaluate spatial memory initially designed by _George Robertson, Mary Czerwinski, Kevin Larson, Daniel C. Robbins, David Thiel, and Maarten van Dantzich_. This experiment requires 66 differents windows containing websites screenshots.
+
+This project is a solution to capture these screenshots automatically.
 
 ## Getting started
 
-```bash
+### With docker
 
-yarn
-yarn start
+This solution is usable with docker so that you don't need to manage the dependencies yourself. Follow the steps:
 
-```
+1. write a config file _config.yaml_ (you can use _config.example.yaml_ as example)
+2.
 
-By default the project use default name, description and author. You can change it by
-updating the values in package.json and using `yarn setup`. Notice you can use this command only once
+### With node.js
 
-## Features
+This project is using node.js
 
-This project includes:
-
-- babel
-- webpack
-- eslint
-- prettier
-- commitlint
-- travis
-- husky
-- jest
+1. type `yarn`
+1. write a config file _config.yaml_ (you can use _config.example.yaml_ as example)
+1.

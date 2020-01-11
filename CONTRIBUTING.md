@@ -1,10 +1,10 @@
-# Contributing to PROJECT_NAME
+# Contributing to data-mountain-windows-generator
 
 :+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
 ## Found an Issue?
 
-Thank you for reporting any issues you find. We do our best to test and make `PROJECT_NAME` as solid as possible, but any reported issue is a real help.
+Thank you for reporting any issues you find. We do our best to test and make `data-mountain-windows-generator` as solid as possible, but any reported issue is a real help.
 
 Please follow these guidelines when reporting issues:
 
@@ -12,12 +12,12 @@ Please follow these guidelines when reporting issues:
 - Tag your issue with the tag `bug`
 - Provide a short summary of what you are trying to do
 - Provide the log of the encountered error if applicable
-- Provide the exact version of PROJECT_NAME.
+- Provide the exact version of data-mountain-windows-generator.
 - Be awesome and consider contributing a [pull request](#want-to-contribute)
 
 ## Want to contribute?
 
-You consider contributing changes to PROJECT_NAME – we dig that!
+You consider contributing changes to data-mountain-windows-generator – we dig that!
 Please consider these guidelines when filing a pull request:
 
 - Follow the [Coding Rules](#coding-rules)
@@ -32,7 +32,7 @@ Please consider these guidelines when filing a pull request:
   _ What you removed
 - For significant changes, post also an issue before to know if your idea has a chance to be accepted
 - Consider your development for windows, linux and macOS platforms at the same time
-  because having a module compatible with all platforms is the main concern of `PROJECT_NAME`.
+  because having a module compatible with all platforms is the main concern of `data-mountain-windows-generator`.
 
 **May the force be with you !!**
 
@@ -74,7 +74,7 @@ These are the authorized types:
 
 ## Versioning
 
-`PROJECT_NAME` use [standard-version](https://github.com/conventional-changelog/standard-version) to handle versioning
+`data-mountain-windows-generator` use [standard-version](https://github.com/conventional-changelog/standard-version) to handle versioning
 automatically. So you just need to follow commit rules and once the maintainer will want to  
 release a version, he will use commands:
 

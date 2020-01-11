@@ -1,7 +1,7 @@
 {
-  "name": "PROJECT_NAME",
-  "version": "VERSION",
-  "description": "DESCRIPTION",
+  "name": "data-mountain-windows-generator",
+  "version": "1.0.0",
+  "description": "A generator of windows for data mountain experiments",
   "main": "index.js",
   "repository": "git@github.com:friedrith/template-node.git",
   "author": "Thibault Friedrich <thibault.friedrich@gmail.com>",
@@ -13,11 +13,8 @@
   "scripts": {
     "setup": "babel-node .scripts/setup.js",
     "build": "webpack",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
-    "start": "concurrently \"npm run build:dev\" \"npm run start:prod\"",
-    "build:dev": "webpack --mode development --watch --port 9000",
-    "start:prod": "nodemon dist/bin.js localhost 8080",
+    "generate:screenshots": "dist/main.js",
+    "generate:list": "dist/list.js",
     "lint": "eslint 'src/**/*.js' '.scripts/**/*.js'",
     "lint:fix": "eslint --fix 'src/**/*.js' '.scripts/**/*.js'",
     "format": "prettier --check 'src/**/*.js' '.scripts/**/*.js'",
@@ -25,26 +22,9 @@
     "release": "standard-version",
     "commitlint": "commitlint --from 623a6550fec576cf037a44138d2d7c3ba049f792"
   },
-  "nodemonConfig": {
-    "ignore": [
-      "src/*",
-      "node_modules/*"
-    ],
-    "delay": "2500"
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "jest": {
-    "coverageThreshold": {
-      "./src/*.js": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": -10
-      }
     }
   },
   "devDependencies": {
@@ -83,8 +63,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "winston": "^3.2.1"
+    "cheerio": "^1.0.0-rc.3",
+    "js-yaml": "^3.13.1"
   }
 }
