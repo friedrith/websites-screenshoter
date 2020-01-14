@@ -13,8 +13,8 @@
   "scripts": {
     "setup": "babel-node .scripts/setup.js",
     "build": "webpack",
-    "generate:screenshots": "dist/main.js",
     "generate:list": "dist/list.js",
+    "generate:screenshots": "dist/main.js",
     "lint": "eslint 'src/**/*.js' '.scripts/**/*.js'",
     "lint:fix": "eslint --fix 'src/**/*.js' '.scripts/**/*.js'",
     "format": "prettier --check 'src/**/*.js' '.scripts/**/*.js'",
@@ -64,6 +64,8 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.13.1",
+    "puppeteer": "^2.0.0",
+    "rimraf": "^3.0.0"
   }
 }

@@ -20,3 +20,8 @@ This project is using node.js
 1. type `yarn`
 1. write a config file _config.yaml_ (you can use _config.example.yaml_ as example)
 1.
+
+```bash
+yarn generate:list
+yarn generate:screenshots
+```

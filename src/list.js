@@ -27,13 +27,14 @@ https
 
       $('tbody a').each(function(index, element) {
         urls.push($(this).text())
-        getConfig().then(config => {
-          fs.writeFile(
-            path.join(__dirname, '../', config.list),
-            'utf8',
-            urls.join('\n')
-          )
-        })
+        getConfig()
+          .then(config => {
+            console
+            fs.writeFile(config.list, urls.join('\n'), 'utf8', () => {})
+          })
+          .catch(error => {
+            console.log('error', error)
+          })
       })
 
       // console.log(html)
