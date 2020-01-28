@@ -1,7 +1,8 @@
 import https from 'https'
-import cheerio from 'cheerio'
-import fs from 'fs'
 import path from 'path'
+import fs from 'fs'
+
+import cheerio from 'cheerio'
 
 import { getConfig } from './config'
 
@@ -27,15 +28,19 @@ https
 
       $('tbody a').each(function(index, element) {
         urls.push($(this).text())
-        getConfig()
-          .then(config => {
-            console
-            fs.writeFile(config.list, urls.join('\n'), 'utf8', () => {})
-          })
-          .catch(error => {
-            console.log('error', error)
-          })
       })
+
+      getConfig()
+        .then(config => {
+          const list = urls
+            .filter(url => !config.excludes.includes(url))
+            .join('\n')
+
+          fs.writeFile(config.list, list, 'utf8', () => {})
+        })
+        .catch(error => {
+          console.log('error', error)
+        })
 
       // console.log(html)
     })

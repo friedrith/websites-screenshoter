@@ -6,20 +6,10 @@ This project is a solution to capture these screenshots automatically.
 
 ## Getting started
 
-### With docker
-
-This solution is usable with docker so that you don't need to manage the dependencies yourself. Follow the steps:
-
-1. write a config file _config.yaml_ (you can use _config.example.yaml_ as example)
-2.
-
-### With node.js
-
 This project is using node.js
 
 1. type `yarn`
 1. write a config file _config.yaml_ (you can use _config.example.yaml_ as example)
-1.
 
 ```bash
 yarn generate:list

@@ -13,6 +13,7 @@
   "scripts": {
     "setup": "babel-node .scripts/setup.js",
     "build": "webpack",
+    "postinstall": "npm run build",
     "generate:list": "dist/list.js",
     "generate:screenshots": "dist/main.js",
     "lint": "eslint 'src/**/*.js' '.scripts/**/*.js'",
