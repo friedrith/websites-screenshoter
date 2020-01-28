@@ -3,3 +3,5 @@ size:
   height: 1080
 count: 60
 screenshots: screenshots
+exclude:
+  - amazon.co.jp

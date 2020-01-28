@@ -22,20 +22,31 @@ const getUrlList = filename =>
 
 let screenshotsFinished = 0
 
-const takeScreenshot = (page, url, screenshots, progress) =>
+const takeScreenshot = (page, url, config) =>
   new Promise(async (resolve, reject) => {
     const link = `https://${url}`
     try {
-      process.stdout.write(`[${parseInt(progress * 100)}%]: ${link}`)
+      const progress = parseInt((100 * screenshotsFinished) / config.count)
+      process.stdout.write(`[${progress}%]: ${link}`)
       await page.goto(link)
       const filename = url.replace(/\./, '_')
-      await page.screenshot({ path: path.join(screenshots, `${filename}.png`) })
+      await page.screenshot({
+        path: path.join(config.screenshots, `${filename}.png`),
+      })
       screenshotsFinished++
     } catch (e) {
       console.error(e)
     } finally {
       process.stdout.clearLine()
       process.stdout.cursorTo(0)
+
+      if (screenshotsFinished === config.count) {
+        console.log(
+          `${screenshotsFinished}/${config.count} screenshots in "${config.screenshots}"`
+        )
+        process.exit(0)
+      }
+
       resolve()
     }
   })
@@ -56,12 +67,10 @@ getConfig()
     const urls = await getUrlList(config.list)
 
     urls
-      .slice(0, config.count)
+      .filter(url => !config.excludes.includes(url))
+      .slice(0, config.count * 1.2)
       .reduce(
-        (p, url, index) =>
-          p.then(() =>
-            takeScreenshot(page, url, config.screenshots, index / config.count)
-          ),
+        (p, url, index) => p.then(() => takeScreenshot(page, url, config)),
         Promise.resolve()
       )
       .then(() => {
