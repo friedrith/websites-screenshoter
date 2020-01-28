@@ -1,5 +1,4 @@
 import https from 'https'
-import path from 'path'
 import fs from 'fs'
 
 import cheerio from 'cheerio'
@@ -41,8 +40,6 @@ https
         .catch(error => {
           console.log('error', error)
         })
-
-      // console.log(html)
     })
   })
   .on('error', function(e) {

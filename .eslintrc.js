@@ -23,7 +23,7 @@ module.exports = {
     'no-const-assign': 'error',
     'no-unused-vars': [2, { vars: 'all', args: 'none' }],
     'import/order': 'error',
-    'no-console': 'error',
+    'no-console': 0,
   },
   parserOptions: {
     ecmaFeatures: {
