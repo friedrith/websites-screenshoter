@@ -2,7 +2,13 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import rimraf from 'rimraf'
 import puppeteer from 'puppeteer'
+import cliProgress from 'cli-progress'
 import { getConfig } from './config'
+
+const progressBar = new cliProgress.SingleBar(
+  {},
+  cliProgress.Presets.shades_classic
+)
 
 const cleanScreenshots = screenshots =>
   new Promise((resolve, reject) => {
@@ -20,29 +26,27 @@ const getUrlList = filename =>
     return list.split(/\n/)
   })
 
-let screenshotsFinished = 0
+const screenshots = []
 
 const takeScreenshot = (page, url, config) =>
   new Promise(async (resolve, reject) => {
     const link = `https://${url}`
     try {
-      const progress = parseInt((100 * screenshotsFinished) / config.count)
-      process.stdout.write(`[${progress}%]: ${link}`)
       await page.goto(link)
-      const filename = url.replace(/\./, '_')
+      const filename = `${url.replace(/\./gs, '_')}.png`
       await page.screenshot({
-        path: path.join(config.screenshots, `${filename}.png`),
+        path: path.join(config.screenshots, filename),
       })
-      screenshotsFinished++
+      screenshots.push(filename)
+      progressBar.update(screenshots.length)
     } catch (e) {
       console.error(e)
     } finally {
-      process.stdout.clearLine()
-      process.stdout.cursorTo(0)
-
-      if (screenshotsFinished === config.count) {
+      if (screenshots.length === config.count) {
+        progressBar.stop()
+        await fs.writeFile(config.outputList, screenshots.join('\n'), 'utf8')
         console.log(
-          `${screenshotsFinished}/${config.count} screenshots in "${config.screenshots}"`
+          `${screenshots.length}/${config.count} screenshots in "${config.screenshots}" folder`
         )
         process.exit(0)
       }
@@ -64,7 +68,9 @@ getConfig()
       deviceScaleFactor: 1,
     })
 
-    const urls = await getUrlList(config.list)
+    const urls = await getUrlList(config.inputList)
+
+    progressBar.start(config.count, 0)
 
     urls
       .filter(url => !config.excludes.includes(url))
@@ -75,7 +81,7 @@ getConfig()
       )
       .then(() => {
         console.log(
-          `${screenshotsFinished} screenshots in "${config.screenshots}"`
+          `${screenshots.length} screenshots in "${config.screenshots}"`
         )
         process.exit(0)
       })

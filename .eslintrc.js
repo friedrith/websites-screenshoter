@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['jest', 'node'],
   rules: {
+    'no-undef': 'error',
     'no-const-assign': 'error',
     eqeqeq: 'error',
     strict: 'error',

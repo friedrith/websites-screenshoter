@@ -2,6 +2,8 @@ size:
   width: 1920
   height: 1080
 count: 60
+inputList: list.txt
+outputList: list.out.txt
 screenshots: screenshots
 exclude:
   - amazon.co.jp

@@ -11,7 +11,8 @@ export const getConfig = () =>
       const config = yaml.safeLoad(fs.readFileSync(configFilename, 'utf8'))
       resolve({
         ...config,
-        list: path.join(dirname, config.list),
+        inputList: path.join(dirname, config.inputList),
+        outputList: path.join(dirname, config.outputList),
         screenshots: path.join(__dirname, '../', config.screenshots),
       })
     } catch (e) {

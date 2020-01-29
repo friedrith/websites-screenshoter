@@ -35,7 +35,7 @@ https
             .filter(url => !config.excludes.includes(url))
             .join('\n')
 
-          fs.writeFile(config.list, list, 'utf8', () => {})
+          fs.writeFile(config.inputList, list, 'utf8', () => {})
         })
         .catch(error => {
           console.log('error', error)
