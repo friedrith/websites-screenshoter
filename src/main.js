@@ -3,7 +3,7 @@ import path from 'path'
 import rimraf from 'rimraf'
 import puppeteer from 'puppeteer'
 import cliProgress from 'cli-progress'
-import { getConfig } from './config'
+import { getConfig, logger } from './config'
 
 const progressBar = new cliProgress.SingleBar(
   {},
@@ -32,7 +32,10 @@ const takeScreenshot = (page, url, config) =>
   new Promise(async (resolve, reject) => {
     const link = `https://${url}`
     try {
-      await page.goto(link)
+      const result = await page.goto(link)
+      if (result.status() !== 200) {
+        throw `status ${result.status()}`
+      }
       const filename = `${url.replace(/\./gs, '_')}.png`
       await page.screenshot({
         path: path.join(config.screenshots, filename),
@@ -40,7 +43,8 @@ const takeScreenshot = (page, url, config) =>
       screenshots.push(filename)
       progressBar.update(screenshots.length)
     } catch (e) {
-      console.error(e)
+      console.log(`error on "${link}"`)
+      logger.error({ error: e })
     } finally {
       if (screenshots.length === config.count) {
         progressBar.stop()

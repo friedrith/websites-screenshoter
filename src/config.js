@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 import yaml from 'js-yaml'
+import winston from 'winston'
 
 export const getConfig = () =>
   new Promise((resolve, reject) => {
@@ -19,3 +20,14 @@ export const getConfig = () =>
       reject(e)
     }
   })
+
+export const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    new winston.transports.File({
+      filename: path.join(__dirname, '../config/combined.log'),
+    }),
+  ],
+})
