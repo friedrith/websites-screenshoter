@@ -1,9 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-authors:
-  - family-names: Friedrich
-    given-names: Thibault
-    orcid: https://orcid.org/0000-0003-4925-7248
 title: Websites Screenshoter
-version: 2.0.4
-date-released: 2021-12-29
+message: 'If you use this software, please cite it as below.'
+type: software
+authors:
+  - given-names: Thibault
+    family-names: Friedrich
+    email: thibault.friedrich@gmail.com
+    affiliation: École de Technologie Supérieure
+  - {}
+identifiers:
+  - type: url
+    value: >-
+      https://github.com/friedrith/websites-screenshoter
+repository-code: 'https://github.com/friedrith/websites-screenshoter'
+keywords:
+  - scraper
+  - datamountain
+  - windows
