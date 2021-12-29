@@ -28,7 +28,7 @@ const getUrlList = filename =>
 
 const screenshots = []
 
-const takeScreenshot = (page, url, config) =>
+const takeScreenshot = (page, url, config, count) =>
   new Promise(async (resolve, reject) => {
     const link = `https://${url}`
     try {
@@ -43,18 +43,10 @@ const takeScreenshot = (page, url, config) =>
       screenshots.push(filename)
       progressBar.update(screenshots.length)
     } catch (e) {
-      console.log(`error on "${link}"`)
+      console.log()
+      console.error(`error on "${link}"`)
       logger.error({ error: e })
     } finally {
-      if (screenshots.length === config.count) {
-        progressBar.stop()
-        await fs.writeFile(config.outputList, screenshots.join('\n'), 'utf8')
-        console.log(
-          `${screenshots.length}/${config.count} screenshots in "${config.screenshots}" folder`
-        )
-        process.exit(0)
-      }
-
       resolve()
     }
   })
@@ -74,19 +66,32 @@ getConfig()
 
     const urls = await getUrlList(config.inputList)
 
-    progressBar.start(config.count, 0)
+    progressBar.start(urls.length, 0)
 
     urls
       .filter(url => !config.excludes.includes(url))
       .slice(0, config.count * 1.2)
-      .reduce(
-        (p, url, index) => p.then(() => takeScreenshot(page, url, config)),
-        Promise.resolve()
-      )
+      // https://css-tricks.com/why-using-reduce-to-sequentially-resolve-promises-works/
+      .reduce((p, url) => {
+        if (screenshots.length < config.count) {
+          return p.then(() => takeScreenshot(page, url, config, urls.length))
+        } else {
+          return Promise.resolve()
+        }
+      }, Promise.resolve())
       .then(() => {
+        progressBar.stop()
         console.log(
           `${screenshots.length} screenshots in "${config.screenshots}"`
         )
+      })
+      .then(() =>
+        fs.writeFile(config.outputList, screenshots.join('\n'), 'utf8')
+      )
+      .then(() => {
+        console.log(`Write list in "${config.outputList}"`)
+      })
+      .then(() => {
         process.exit(0)
       })
   })

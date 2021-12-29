@@ -1,9 +1,12 @@
 size:
-  width: 1920
-  height: 1080
-count: 60
+  width: 900
+  height: 720
+count: 500
 inputList: list.txt
 outputList: list.out.txt
-screenshots: screenshots
-exclude:
+screenshots: screenshots/screenshots-1
+excludes:
+  - bp.blogspot.com
+  - googleusercontent.com
+  - adobe.com
   - amazon.co.jp
