@@ -1,9 +1,9 @@
 # Websites Screenshoter
 
 This repository contains the code to capture screenshots from websites automatically. 
-It generates a list of websites to scrap then for each website, take a screenshot. This tool has been created for the purpose of an academic paper: The Effect of Increased Body Motion in Virtual Reality on a Placement-Retrieval Task[[1]](@1).
+It generates a list of websites to scrap then for each website, take a screenshot. This tool has been created for the purpose of an academic paper: _The Effect of Increased Body Motion in Virtual Reality on a Placement-Retrieval Task_[[1]](@1).
 
-It was inspired by another academic paper: Data Mountain: Using Spatial Memory for Document Management[[2]](#2).
+It was inspired by another academic paper: _Data Mountain: Using Spatial Memory for Document Management_[[2]](#2).
 
 ## Getting started
 
